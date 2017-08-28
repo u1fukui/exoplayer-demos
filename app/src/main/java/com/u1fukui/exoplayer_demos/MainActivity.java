@@ -1,5 +1,6 @@
 package com.u1fukui.exoplayer_demos;
 
+import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -35,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.d(TAG, "onCreate");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -49,7 +51,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        Log.d(TAG, "onConfigurationChanged");
+        super.onConfigurationChanged(newConfig);
+    }
+
+    @Override
     protected void onDestroy() {
+        Log.d(TAG, "onDestroy");
         if (player != null) {
             player.setVideoSurfaceView(null);
             player.release();
